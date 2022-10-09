@@ -1,8 +1,6 @@
 # innablr-challenge
 
-[![Build CI](https://github.com/bradyslot/innablr-challenge/actions/workflows/build.yml/badge.svg)](https://github.com/bradyslot/innablr-challenge/actions)
-[![Test CI](https://github.com/bradyslot/innablr-challenge/actions/workflows/test.yml/badge.svg)](https://github.com/bradyslot/innablr-challenge/actions)
-[![Docker CI](https://github.com/bradyslot/innablr-challenge/actions/workflows/docker.yml/badge.svg)](https://github.com/bradyslot/innablr-challenge/actions)
+[![CI](https://github.com/bradyslot/innablr-challenge/actions/workflows/ci.yml/badge.svg)](https://github.com/bradyslot/innablr-challenge/actions)
 
 ## Objectives
 Serve as a base for creating REST API's in Rust using the Rocket web framework.  
