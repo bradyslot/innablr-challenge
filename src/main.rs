@@ -1,7 +1,6 @@
 #![cfg_attr(debug_assertions, allow(dead_code, unused_imports))]
 use rocket::{
     get, launch, catch, catchers, routes,
-    serde::{Deserialize, Serialize},
     serde::json::{json, Value}
 };
 
