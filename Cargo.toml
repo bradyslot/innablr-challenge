@@ -2,14 +2,15 @@
 name = "innablr-challenge"
 version = "0.1.0"
 edition = "2021"
-description = "API programming challenge for innablr written in rust using rocket framework."
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "Innablr API challenge written in rust using rocket framework."
+build = "build.rs"
 
 [dependencies]
 rocket = { version = "0.5.0-rc.1", features = ["tls", "json"] }
 serde = { version = "1.0.130", features = ["derive"] }
-serde_json = "1.0.68"
 reqwest = { version = "0.11.6", features = ["json", "rustls-tls"] }
-vergen = "7.4.2"
 
+[build-dependencies]
+chrono = "0.4.22"
+anyhow = "1.0"
+vergen = "6"

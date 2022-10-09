@@ -1,47 +1,37 @@
 #![cfg_attr(debug_assertions, allow(dead_code, unused_imports))]
-use reqwest;
 use rocket::{
-    catch, catchers,
-    fairing::{Fairing, Info, Kind},
-    get,
-    http::{Cookie, CookieJar},
-    launch, post,
-    response::status::Created,
-    routes, uri, Data, Request, State,
+    get, launch, catch, catchers, routes,
+    serde::{Deserialize, Serialize},
+    serde::json::{json, Value}
 };
-use rocket::serde::{Deserialize, Serialize};
-use vergen::{vergen, Config, ShaKind};
 
 #[cfg(test)] mod tests;
 
 
-fn get_application_version() -> String {
-    return env!("CARGO_PKG_VERSION").to_string();
-}
-
-fn get_application_description() -> String {
-    return env!("CARGO_PKG_DESCRIPTION").to_string();
-}
-
-fn get_current_git_commit() -> String {
-    return env!("VERGEN_SHA").to_string();
-}
-
-#[derive(Serialize, Debug, Clone)]
-struct MyApplicaion {
-    version: get_application_version,
-    description: String,
-    sha: String
+#[catch(404)]
+fn not_found() -> Value {
+    json!({
+        "status": "error".to_string(),
+        "reason": "Resource not found".to_string(),
+    })
 }
 
 #[get("/")]
 fn index() -> &'static str {
-    "Hello, world!"
+    "Hello World"
 }
 
 #[get("/status")]
-fn status() -> String {
-    "All good.".to_string()
+fn status() -> Value {
+    json!({
+        env!("CARGO_PKG_NAME").to_string(): [
+            {
+                "version": env!("CARGO_PKG_VERSION").to_string(),
+                "description": env!("CARGO_PKG_DESCRIPTION").to_string(),
+                "sha": env!("VERGEN_GIT_SHA").to_string()
+            }
+        ]
+    })
 }
 
 #[launch]
@@ -50,4 +40,5 @@ fn rocket() -> _ {
         index,
         status,
     ])
+    .register("/", catchers![not_found])
 }
