@@ -38,6 +38,7 @@ jobs:
       - run: cargo test
   publish:
     name: publish
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
