@@ -4,9 +4,10 @@ use rocket::{
     serde::json::{json, Value}
 };
 
+// set attribute to run tests module
 #[cfg(test)] mod tests;
 
-
+// catch requests to unknown routes
 #[catch(404)]
 fn not_found() -> Value {
     json!({
@@ -15,11 +16,13 @@ fn not_found() -> Value {
     })
 }
 
+// return hello world as a string from the root route
 #[get("/")]
 fn index() -> &'static str {
     "Hello World"
 }
 
+// return a json object with the name of the app and version details
 #[get("/status")]
 fn status() -> Value {
     json!({
@@ -33,6 +36,7 @@ fn status() -> Value {
     })
 }
 
+// launch the rocket instance which serves as the main entry point
 #[launch]
 fn rocket() -> _ {
     rocket::build().mount("/", routes![
