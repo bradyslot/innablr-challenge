@@ -13,7 +13,6 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-latest
-    strategy:
     steps:
       - uses: actions/checkout@v3
       - run: rustup toolchain install stable --profile minimal
@@ -25,7 +24,6 @@ jobs:
     name: test
     needs: build
     runs-on: ubuntu-latest
-    strategy:
     steps:
       - uses: actions/checkout@v3
       - run: rustup toolchain install stable --profile minimal
