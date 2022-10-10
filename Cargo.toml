@@ -3,7 +3,7 @@ name = "innablr-challenge"
 version = "0.1.0"
 edition = "2021"
 description = "Innablr API challenge written in rust using rocket framework."
-build = "build.rs"
+build = "src/build.rs"
 
 [dependencies]
 rocket = { version = "0.5.0-rc.1", features = ["tls", "json"] }
