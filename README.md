@@ -3,7 +3,7 @@
 [![CI](https://github.com/bradyslot/innablr-challenge/actions/workflows/ci.yml/badge.svg)](https://github.com/bradyslot/innablr-challenge/actions)
 
 ## Objectives
-Serve as a base for creating REST API's in Rust using the Rocket web framework.  
+Serve as a base for creating REST API's in Rust using the [Rocket](https://github.com/SergioBenitez/Rocket) web framework.  
 Have something that is easily cloned and extended fit for purpose.  
 Be an example of a simple API with a "/" and "/status" endpoint.  
 Pre-configured Build and Testing CI with Github Actions.  
@@ -42,7 +42,7 @@ curl -s localhost:8000/
 Hello World
 ```
 
-The JSON returned from "/status" is retrieved using the crate `vergen`.  
+The variables in the JSON returned from "/status" is retrieved using the crate [vergen](https://github.com/rustyhorde/vergen).  
 The program name and description is pulled from Cargo.toml.  
 "sha" is pulled from the local environment at build time using the build.rs file
 which compiles and runs as a build-depedency of the project.  
