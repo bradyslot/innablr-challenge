@@ -29,20 +29,38 @@ It's as fast as Non-CG'd languages like C/C++.
 
 ## Running and testing the API
 
+### Run with docker
 innablr-challenge:latest is built using Github Actions on each push to master.  
+Tagged releases are also published with the version tag.  
+
 ```bash
 docker pull ghcr.io/bradyslot/innablr-challenge:latest
 docker run --network host -d --rm --name innablr-challenge-1 innablr-challenge
 ```
 
-Test the API enpoints from the CLI using curl.  
+### Run locally
+Install cargo and rustup via your preferred package manager, or using the official script for Linux and MacOS.  
+
+```bash
+curl https://sh.rustup.rs -sSf | sh
+```
+
+Windows binary can be obtained from [win.rustup.rs](https://win.rustup.rs/).
+
+```bash
+git clone git@github.com:bradyslot/innablr-challenge.git && cd innablr-challenge
+cargo run
+```
+
+### Test API
+Once the application is running you can test the API endpoints from the CLI using curl.  
 You should expect to see similar output to the below.  
 ```bash
 curl -s localhost:8000/
 Hello World
 ```
 
-The variables in the JSON returned from "/status" is retrieved using the crate [vergen](https://github.com/rustyhorde/vergen).  
+The variables in the JSON returned from "/status" are retrieved using the crate [vergen](https://github.com/rustyhorde/vergen).  
 The program name and description is pulled from Cargo.toml.  
 "sha" is pulled from the local environment at build time using the build.rs file
 which compiles and runs as a build-depedency of the project.  
@@ -63,7 +81,7 @@ curl -s localhost:8000/status | jq
 
 Rocket provides a way for catching requests on unknown endpoints and returning a specific response.  
 ```bash
-curl -s localhost:8000/random
+curl -s localhost:8000/random | jq
 ```
 ```json
 {
