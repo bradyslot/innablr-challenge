@@ -2,6 +2,12 @@
 
 [![CI](https://github.com/bradyslot/innablr-challenge/actions/workflows/ci.yml/badge.svg)](https://github.com/bradyslot/innablr-challenge/actions)
 
+## What is this really?
+This was my answer to a devops interview challenge.  
+Clearly the company doesn't respect peoples time or effort.  
+I don't respect them either, so it's free for anyone else to spy on.  
+If this firm reaches out to you, they're looking for a standard higher than this, whatever that means ¯\_(ツ)_/¯  
+
 ## Objectives
 Serve as a base for creating REST API's in Rust using the [Rocket](https://github.com/SergioBenitez/Rocket) web framework.  
 Have something that is easily cloned and extended fit for purpose.  
